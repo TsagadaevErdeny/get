@@ -9,9 +9,12 @@ duty = 0.0
 pwm.start(duty)
 
 while True:
-    duty += 0.7
+    pwm.ChangeDutyCycle(duty)
     time.sleep(0.05)
+
+    """duty = 25"""
 
     duty += 1.0
     if duty > 100.0:
         duty = 0.0
+        
