@@ -14,14 +14,20 @@ def dec2bin(value):
     return [int(element) for element in bin(value)[2:].zfill(8)]
 sleep_time = 0.2
 while True:
-    if GPIO.input(up):
+    boolup = GPIO.input(up)
+    booldown = GPIO.input(down)
+    if boolup & booldown:
+        num = 255
+        print(num, dec2bin(num))
+        time.sleep(sleep_time)
+    elif boolup:
         num += 1
         if num >= 256:
         	num = 0
         	print("You've exceeded the maximum so now num is 0")
         print(num, dec2bin(num))
         time.sleep(sleep_time)
-    if GPIO.input(down):
+    elif booldown:
         num -= 1
         if num < 0:
         	num = 255
