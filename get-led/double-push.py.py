@@ -32,8 +32,8 @@ while True:
     elif booldown:
         num -= 1
         if num < 0:
-        	num = 255
-        	print("You've reached negative numbers so now num is 255")
+        	num = 0
+        	print("You've reached negative numbers so num is still 0")
         print(num, dec2bin(num))
         GPIO.output(leds, dec2bin(num))
         time.sleep(sleep_time)
