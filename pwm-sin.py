@@ -1,16 +1,16 @@
-import r2r_dac as r2r
+import pwm_dac
 import signal_generator as sg
 import time
 
 amplitude = 3.15
 signal_frequency = 10
-sampling_frequency = 200 #1000
+sampling_frequency = 1000 #1000
 
 try:
     #time.clock
     start_time = time.time()
         
-    dac = r2r.R2R_DAC([16, 20, 21, 25, 26, 17, 27, 22], 3.15, True)
+    dac = pwm_dac.R2R_DAC(22, sampling_frequency, amplitude, True)
     while True:
         end_time = time.time()
         elapsed_time = end_time - start_time

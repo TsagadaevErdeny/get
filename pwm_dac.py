@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-import time
+#import time
 
 class R2R_DAC:
     def __init__(self, gpio_pin, pwm_frequancy, dynamic_range, verbose = False):
@@ -26,9 +26,9 @@ class R2R_DAC:
         duty = int(voltage / self.dynamic_range * 10000)/100
         print("Коэффициент заполнения: ", duty)
         print("")
-        for i in range(5*self.pwm_frequancy):
+        for i in range(self.pwm_frequancy):
             pwm.ChangeDutyCycle(duty)
-            time.sleep(1/self.pwm_frequancy)
+            #time.sleep(1/self.pwm_frequancy)
 
 if __name__ == "__main__":
     try:

@@ -4,7 +4,7 @@ import time
 
 amplitude = 3.15
 signal_frequency = 10
-sampling_frequency = 200 #1000
+sampling_frequency = 1000 #1000
 
 try:
     #time.clock
@@ -15,7 +15,7 @@ try:
         end_time = time.time()
         elapsed_time = end_time - start_time
         #print(elapsed_time)
-        voltage = amplitude*sg.get_sin_wave_amplitude(signal_frequency, elapsed_time)
+        voltage = amplitude*sg.get_triangular_amplitude(signal_frequency, elapsed_time)
         dac.set_voltage(voltage)
         sg.wait_for_sampling_period(sampling_frequency)
 
