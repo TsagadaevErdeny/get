@@ -18,20 +18,21 @@ class R2R_ADC:
         GPIO.output(self.gpio_bits, 0)
         GPIO.cleanup()
     
-    def number_to_dac(self, number):
-        GPIO.output(self.bits_gpio, [int(element) for element in bin(number)[2:].zfill(8)])
-        print(number, [int(element) for element in bin(number)[2:].zfill(8)])
+    def number_to_dac(self, num):
+        print(num, [int(element) for element in bin(num)[2:].zfill(8)])
+        GPIO.output(self.bits_gpio, [int(element) for element in bin(num)[2:].zfill(8)])
     
     def sequential_counting_adc(self):
         for i in range(256):
             self.number_to_dac(i)
             time.sleep(self.compare_time)
-            comparator_value = GPIO.input(21)
+            comparator_value = GPIO.input(self.comp_gpio)
             if not comparator_value:
                 return(i-1)
                 break
             elif (i == 255):
                 return(i)
+                break
     
     def get_sc_voltage(self):
         value = self.sequential_counting_adc;
