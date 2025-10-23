@@ -25,7 +25,7 @@ class R2R_DAC:
 
 if __name__ == "__main__":
     try:
-        dac = R2R_DAC([16, 20, 21, 25, 26, 17, 27, 22], 3.15, True)
+        dac = R2R_DAC([26, 20, 19, 16, 13, 12, 25, 11], 3.70, True)
         
         while True:
             try:
